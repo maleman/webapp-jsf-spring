@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link type="text/css" rel="stylesheet" href="./css/login.css" />
+</h:head>
+<h:body style="">
+	<div class="app" id="app" style="text-align: center;">
+		<p:growl id="mensajes" showDetail="true" life="2000" />
+
+		<div id="login-error-msg">
+			<p:staticMessage severity="error" summary="ERROR"
+				detail="Ocurrio un error con el inicio de session" style="width: 100%" />
+		</div>
+
+		<h:form id="login-form" prependId="false">
+			<p:panel class="login-container" header="Login">
+				<div class="card">
+					<div class="ui-fluid">
+						<div class="field grid">
+							<h:outputLabel for="username" value="Usuario:" />
+							<p:inputText id="username" required="true" label="username" />
+							<h:message for="username"></h:message>
+						</div>
+
+						<div class="field grid">
+							<h:outputLabel for="password" value="Contrase&ntilde;a:" />
+							<p:password id="password" required="true" label="password" />
+						</div>
+					</div>
+				</div>
+				<f:facet name="footer">
+					<div class="button-container">
+						<p:linkButton outcome="createuser.xhtml" value="Nuevo Usuario"
+							class="btn-create-account ui-button-flat" />
+
+						<p:commandButton id="loginButton" value="Login"
+							styleClass="rounded-button" ajax="false" />
+
+					</div>
+				</f:facet>
+
+			</p:panel>
+		</h:form>
+	</div>
+	<script type="text/javascript" src="/js/login.js"></script>
+</h:body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html" 
+		xmlns:f="http://java.sun.com/jsf/core" 
+		xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<style type="text/css">
+
+	</style>
+</h:head>
+<h:body>
+	<ui:decorate template="./views/layout.xhtml">
+		<ui:define name="content">
+			<h1 class="welcome-text">Bienvenido #{indexBean.userName} </h1>
+		</ui:define>
+	</ui:decorate>
+
+</h:body>
+</html>

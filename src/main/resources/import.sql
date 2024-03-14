@@ -1,0 +1,2 @@
+INSERT INTO USERS(id, enabled,  username, password) VALUES(0, true, 'admin', '$2a$12$9zx19baIS4jFh9GynIFlJe241sE2aAzVKFdqJ4.f.W6FCAHIS1MQa');
+INSERT INTO AUTHORITIES (id,  AUTHORITY, USERNAME) VALUES (0, 'ROLE_ADMIN', 'admin');

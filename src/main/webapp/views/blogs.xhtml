@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<link href="./../css/blog.css" rel="stylesheet" type="text/css" />
+	<title>Blogs</title>
+</h:head>
+
+<h:body>
+	<ui:decorate template="./layout.xhtml">
+		<ui:define name="content">
+			<div class="blogs-content">
+				<h2 class="welcome-text">Blogs</h2>
+				<h:form id="blogsForm">
+					<div class="tool-add-new-record" style="margin: 5px;">
+						<p:commandButton action="newBlog.xhtml?faces-redirect=true"
+							value="Nuevo Blog" class="btn-create-account ui-button-flat" />
+					</div>
+
+					<h:dataTable id="blogsTable" binding="#{table}"
+						value="#{blogBean.blogs}" var="blogs"
+						styleClass="table table-striped table-bordered tableUpdated"
+						rendered="#{not empty blogBean.blogs}">
+
+						<h:column id="crud-column-tools">
+							<f:facet name="header"></f:facet>
+							<div class="crud-tools">
+								<p:commandButton icon="pi pi-pencil"
+									action="#{blogBean.displayEditModal}"
+									update="blogsForm"
+									styleClass="rounded-button ui-button-success ui-button-outlined">
+									<f:param name="selectedreaderId" value="#{blogs.id}" />
+								</p:commandButton>
+								<p:commandButton icon="pi pi-times"
+									action="#{blogBean.deleteByID(blogs.id)}"
+									styleClass="rounded-button ui-button-danger ui-button-outlined" />
+
+							</div>
+						</h:column>
+
+						<h:column style="width:5%">
+							<f:facet name="header">Id</f:facet>
+								<div class="blog-table-cell" align="center">
+									<h:outputText value="#{blogs.id}" />
+								</div>
+						</h:column>
+
+						<h:column style="width:30%">
+							<f:facet name="header">Title</f:facet>
+							<div class="blog-table-cell" align="center">
+								<h:outputText value="#{blogs.title}" />
+							</div>
+						</h:column>
+
+						<h:column style="width:45%">
+							<f:facet name="header">Description</f:facet>
+							<div class="blog-table-cell" align="center">
+								<h:outputText value="#{blogs.description}" />
+							</div>
+
+						</h:column>
+					</h:dataTable>
+				</h:form>
+				<p:dialog header="Update Blog" widgetVar="dlgUpdate" minHeight="40"
+					width="550" showEffect="fade" modal="true">
+
+					<h:form id="blogEditForm" styleClass="form-horizontal">
+						<p:growl id="messageGrowl" showDetail="true" sticky="false" />
+						<div class="card">
+							<div class="ui-fluid">
+								<div class="field grid">
+									<div class="col-12 md:col-10">
+										<h:inputHidden id="id" disabled="true" />
+									</div>
+								</div>
+								<div class="field grid">
+									<p:outputLabel for="title" styleClass="col-12 md:col-2"
+										value="title" />
+									<div class="col-12 md:col-10">
+										<p:inputText id="title" value="#{blogBean.title}"
+											required="true" maxlength="60"
+											requiredMessage="Reader Name Cannot Be Blank" />
+										<h:message for="title" errorStyle="color: red"
+											infoStyle="color: green" />
+									</div>
+								</div>
+								<div class="field grid">
+									<p:outputLabel for="description" styleClass="col-12 md:col-2"
+										value="Description" />
+									<div class="col-12 md:col-10">
+										<p:inputTextarea id="description" rows="5" cols="30"
+											counter="display" required="true" maxlength="4000"
+											counterTemplate="{0} characters remaining."
+											value="#{blogBean.description}" autoResize="false" />
+										<h:outputText id="display" class="block" />
+										<h:message for="description" errorStyle="color: red"
+											infoStyle="color: green" />
+									</div>
+								</div>
+
+								<p:panelGrid columns="4"
+									columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+									layout="grid" styleClass="ui-panelgrid-blank ui-fluid"
+									style="border:0px none; background-color:transparent;">
+
+									<p:row>
+										<p:column styleClass="ui-grid-col-12">
+											<p:commandButton value="Save" action="#{blogBean.saveEdit}"
+												onclick="PF('dlgUpdate').hide()"
+												update="blogEditForm blogsForm"
+												style="width: auto; margin-right: 5px;">
+												<f:param name="editedId" value="#{blogBean.editId}" />
+											</p:commandButton>
+
+											<p:commandButton value="Cancel" update="blogEditForm"
+												onclick="PF('dlgUpdate').hide()"
+												action="blogs.xhtml?faces-redirect=true"
+												styleClass="ui-button-raised ui-button-danger"
+												style="width: auto; margin-top: 5px;" />
+										</p:column>
+									</p:row>
+
+								</p:panelGrid>
+							</div>
+						</div>
+					</h:form>
+				</p:dialog>
+			</div>
+
+
+		</ui:define>
+	</ui:decorate>
+
+</h:body>
+</html>

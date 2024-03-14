@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Crear cuenta</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link type="text/css" rel="stylesheet" href="./css/login.css" />
+</h:head>
+<h:body style="">
+	<div class="app" id="app" style="text-align: center;">
+		<p:growl id="mensajes" showDetail="true" life="2000" />
+		<h:form id="new-user-form">
+			<p:panel class="login-container" header="Crear cuenta">
+				<div class="card">
+					<div class="ui-fluid">
+						<div class="field grid">
+							<h:outputLabel for="username-create-user"
+								value="Nombre de usuario:" />
+							<p:inputText id="username-create-user" required="true"
+								label="username" value="#{userBean.userName}"
+								requiredMessage="El nombre de usuario es requerido."
+								validatorMessage="El nombre de usuario no cumple con los requisitos">
+								<f:validateRegex pattern="^[a-zA-Z]{1}[a-z0-9_-]{3,10}$" />
+							</p:inputText>
+							<div id="user-name-advice" class="input-advice">
+								<h3>El nombre de usuario debe:</h3>
+								<ul>
+									<li>Empezar con una letra</li>
+									<li>Seguido de letras o numeros o (_ -)</li>
+									<li>Debe tener una longitud minima de 3</li>
+									<li>Debe tener una longitud maxima de 10</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="field grid">
+							<h:outputLabel for="password-create-user"
+								value="Contrase&ntilde;a:" />
+							<p:password id="password-create-user" required="true"
+								label="password" value="#{userBean.password}"
+								requiredMessage="La Contrase&ntilde;a: es requerida."
+								validatorMessage="La Contrase&ntilde;a no cumple con los requisitos">
+								<f:validateRegex pattern="(?=(.*[0-9]))(?=.*[\!@#$%^*?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}" />
+							</p:password>
+							<div id="user-pass-advice" class="input-advice">
+								<h3>La Contrase&ntilde;a debe:</h3>
+								<ul>
+									<li>Debe tener una letra minúscula, una letra mayúscula,</li>
+									<li>un número, un carácter (\!@#$%^*?)</li>
+									<li>Debe tener una longitud minima de 8</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<f:facet name="footer">
+					<div class="button-container">
+						<div>
+							<p></p>
+						</div>
+						<p:commandButton id="create-user-button" value="Crear cuenta"
+							update=":mensajes" action="#{userBean.createUser}"
+							styleClass="rounded-button create-user-button" />
+
+					</div>
+				</f:facet>
+
+			</p:panel>
+		</h:form>
+	</div>
+	<script type="text/javascript" src="/js/create-user.js"></script>
+</h:body>
+</html>

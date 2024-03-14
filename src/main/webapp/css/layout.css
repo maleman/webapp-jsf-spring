@@ -1,0 +1,244 @@
+body {
+	background-color: rgb(60, 60, 60);
+	color: #fff !important;
+	font-family: roboto, Arial, Helvetica, sans-serif;
+	font-size: 0.9rem;
+}
+
+.welcome-text {
+	text-align: center;
+}
+
+#layout-page {
+	height: 100vh;
+	width: 100%;
+	max-width: 1440px;
+	margin: auto;
+}
+
+.layout-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background: linear-gradient(70deg, rgba(21, 20, 22, 1) 0%, rgba(4, 4, 9, 1) 35%, rgba(93, 93, 92, 1) 100%);
+	height: 100px;
+}
+
+.layout-header h1 {
+	margin-left: 50px;
+}
+
+.layout-header #logout-form {
+	margin-right: 2rem;
+}
+
+.layout-header #logout-form a {
+	color: #fff;
+	font-weight: 400;
+}
+
+#content-layout-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin: auto 3rem;
+	height: calc(100% - 160px);
+	gap: 10px;
+}
+
+#messages-layout-container {
+	display: none;
+}
+
+
+
+#footer-layout-container {
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 1rem;
+}
+
+#footer-layout-container a {
+	color: #fff;
+}
+
+.sidebar-layout-menu {
+	height: 100%;
+	width: 250px;
+}
+
+.sidebar-layout-menu form {
+	height: 100%;
+}
+
+.sidebar-layout-menu form #layout-menu,
+.sidebar-layout-menu form #layout-menu h3,
+.sidebar-layout-menu form #layout-menu ul li {
+	background-color: rgb(60, 60, 60) !important;
+	color: #fff !important;
+}
+
+#layout-menu ul li a {
+	color: #fff !important;
+}
+
+#layout-menu ul li a:hover {
+	color: rgb(60, 60, 60) !important;
+	font-weight: bold;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#layout-menu ul li a span {
+	color: inherit;
+}
+
+.sidebar-layout-menu form #layout-menu {
+	height: 100%;
+	width: 250px;
+	margin: 5px auto;
+}
+
+#layout-menu ul li {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+#layout-menu ul li a {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+.layout-content {
+	display: flex;
+    width: calc(100% - 250px);
+    height: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.tool-add-new-record{
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	
+}
+
+
+.tool-add-new-record button span{
+	 border: 2px solid #FFF; 
+	 border-radius: 10px;
+}
+
+
+.tool-add-new-record button span{
+	color: #fff;
+}
+
+.table-striped {
+	border-collapse: collapse;
+	width: 90% !important;
+	margin: 17px 58px 0 !important;
+}
+
+.table-striped tr:nth-child(even) {
+  background-color: rgb(50, 50, 50)
+}
+
+.table-striped tbody tr td:first-child{
+	width: 100px;
+}
+
+.table-striped tbody tr:first-child{
+	border-top: 2px solid #fff;
+}
+
+.table-striped tbody tr {
+	margin: 10px 0 10px 0;
+}
+
+.crud-tools{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2px;
+}
+
+
+@media (max-width:900px) {
+
+	#layout-page {
+		min-width: 450px;
+	}
+
+	.layout-content {
+		width: 100%;
+	}
+
+	#header-container #layout-header h1 {
+		font-size: 1rem;
+	}
+
+	#content-layout-container {
+		flex-direction: column;
+	}
+
+
+	.sidebar-layout-menu,
+	.sidebar-layout-menu form,
+	.sidebar-layout-menu form #layout-menu {
+		height: 50px;
+		width: 100%;
+	}
+
+	#content-layout-container {
+		margin: 0;
+	}
+
+	.sidebar-layout-menu form #layout-menu ul {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		column-gap: .5rem;
+	}
+
+	.sidebar-layout-menu form #layout-menu ul li a span {
+		font-size: 1rem;
+	}
+
+	.sidebar-layout-menu form #layout-menu ul li:first-child {
+		display: none;
+	}
+
+}
+
+
+@media (max-width:500px) {
+	#layout-page {
+		min-width: 450px;
+	}
+
+	.layout-content {
+		width: 100%;
+	}
+
+	.sidebar-layout-menu form #layout-menu ul li a span {
+		font-size: .6rem;
+	}
+
+	.sidebar-layout-menu form #layout-menu ul li a span:first-child {
+		display: none;
+	}
+}

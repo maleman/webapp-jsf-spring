@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<link href="./../css/blog.css" rel="stylesheet" type="text/css" />
+	<title>Nuevo blog</title>
+</h:head>
+<h:body>
+	<ui:decorate template="./layout.xhtml">
+		<ui:define name="content">
+			<div class="new-blog-panel">
+				<h2 class="welcome-text">Crear Blog</h2>
+				<h:form id="blogForm" styleClass="form-horizontal">
+					<p:growl id="messageGrowl" showDetail="true" sticky="false" />
+					<div class="card">
+						<div class="ui-fluid">
+							<div class="field grid">
+								<p:outputLabel for="id" styleClass="col-12 md:col-2"
+									value="Id: Generado automaticamente :)" />
+								<div class="col-12 md:col-10">
+									<p:inputText id="id" disabled="true" />
+								</div>
+							</div>
+							<div class="field grid">
+								<p:outputLabel for="title" styleClass="col-12 md:col-2"
+									value="title" />
+								<div class="col-12 md:col-10">
+									<p:inputText id="title" value="#{blogBean.title}"
+										required="true" maxlength="60"
+										requiredMessage="Reader Name Cannot Be Blank" />
+									<h:message for="title" errorStyle="color: red"
+										infoStyle="color: green" />
+								</div>
+							</div>
+							<div class="field grid">
+								<p:outputLabel for="description" styleClass="col-12 md:col-2"
+									value="Description" />
+								<div class="col-12 md:col-10">
+									<p:inputTextarea id="description" rows="5" cols="30"
+										counter="display" required="true" maxlength="4000"
+										counterTemplate="{0} characters remaining."
+										value="#{blogBean.description}" autoResize="false" />
+									<h:outputText id="display" class="block" />
+									<h:message for="description" errorStyle="color: red"
+										infoStyle="color: green" />
+								</div>
+							</div>
+
+							<div class="new-blog-tool-panel">
+								<p:commandButton value="Save" action="#{blogBean.addNew}"
+									update=":blogForm" 
+									styleClass="ui-button-outlined"/>
+
+								<p:commandButton value="Cancel"
+									type="button"
+									action="#{blogBean.cancelOnNew()}"
+									styleClass="ui-button-outlined ui-button-danger"/>
+							</div>
+
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:decorate>
+
+</h:body>
+</html>
