@@ -1,4 +1,4 @@
-.blogs-content{
+.blogs-reader-content{
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: column;
@@ -8,17 +8,14 @@
     height: 100%;
 }
 
-#blogsForm{
+
+#blogsReadersForm{
 	width: 100%;
 }
 
-.blog-table-cell{
-	padding: 20px;
-}
 
-
-/** New  Blog **/
-.new-blog-panel {
+/** New  Blog reader **/
+.new-blog-reader-panel {
 	width: 60%;
 	margin: auto;
 	padding: 20px;
@@ -26,7 +23,7 @@
 	border-radius: 10px;
 }
 
-.new-blog-tool-panel {
+.new-blog-reader-tool-panel {
 	display: flex;
 	justify-content: flex-end;
 	align-content: center;
@@ -35,14 +32,11 @@
 	gap: 10px;
 }
 
-
-
-.new-blog-tool-panel button {
+.new-blog-reader-tool-panel button {
 	height: 50px;
 	width: 80px !important;
 }
 
-.new-blog-tool-panel button span{
+.new-blog-reader-tool-panel button span{
 	font-weight: bold;
 }
-

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<link href="./../css/blog-reader.css" rel="stylesheet" type="text/css" />
+	<title>Blogs Reader</title>
+</h:head>
+
+<h:body>
+	<ui:decorate template="./layout.xhtml">
+		<ui:define name="content">
+			<div class="blogs-reader-content">
+				<h2 class="welcome-text">Blogs Readers</h2>
+				<h:form id="blogsReadersForm">
+					<p:growl id="messageGrowl" showDetail="true" sticky="false" />
+					<div class="tool-add-new-record">
+						<p:commandButton action="newBlogReader.xhtml?faces-redirect=true"
+							value="Nuevo Blog Reader"
+							class="btn-create-account ui-button-flat" />
+					</div>
+					<h:dataTable id="blogreaderTable" binding="#{table}"
+						value="#{blogReaderBean.blogreaders}" var="br"
+						styleClass="table table-striped table-bordered tableUpdated"
+						rendered="#{not empty blogReaderBean.blogreaders}">
+						
+						<h:column id="crud-column-tools">
+							<f:facet name="header"></f:facet>
+							<div class="crud-tools">
+								<p:commandButton icon="pi pi-pencil"
+									action="#{blogReaderBean.displayEditModal()}"
+									update="blogReaderEditForm:blogs blogReaderEditForm:readers"
+									styleClass="rounded-button ui-button-success ui-button-outlined">
+									<f:param name="selectedId" value="#{br.id}" />
+								</p:commandButton>
+								<p:commandButton icon="pi pi-times" update=":blogsReadersForm"
+									action="#{blogReaderBean.deleteByID(br.id)}"
+									styleClass="rounded-button ui-button-danger ui-button-outlined" />
+							</div>
+						</h:column>
+
+						<h:column style="width:35%">
+							<f:facet name="header">Blog</f:facet>
+							<div align="center">
+								<h:outputText value="#{br.blog.title}" />
+							</div>
+
+						</h:column>
+
+						<h:column style="width:35%">
+							<f:facet name="header">Reader</f:facet>
+							<div align="center">
+								<h:outputText value="#{br.reader.name}" />
+							</div>
+
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+
+				<p:dialog header="Update Blog" widgetVar="dlgUpdate" minHeight="40"
+					width="550" showEffect="fade" modal="true">
+
+					<h:form id="blogReaderEditForm" styleClass="form-horizontal">
+						<p:growl id="messageGrowl" showDetail="true" sticky="false" />
+						<div class="card">
+							<div class="ui-fluid">
+								<div class="field grid" style="display: none;">
+									<p:outputLabel for="id" styleClass="col-12 md:col-2"
+										value="Id: Auto Selected By The System :)" />
+									<div class="col-12 md:col-10">
+										<p:inputText id="id" disabled="true" />
+									</div>
+								</div>
+								<div class="field grid">
+									<p:outputLabel for="@next" value="Blogs" />
+									<p:selectOneMenu id="blogs" value="#{blogReaderBean.blogId}">
+										<f:selectItem itemLabel="Select One" itemValue="#{NULL}" />
+										<f:selectItems value="#{blogReaderBean.blogs}" />
+									</p:selectOneMenu>
+								</div>
+								<div class="field grid">
+									<p:outputLabel for="@next" value="Readers" />
+									<p:selectOneMenu id="readers"
+										value="#{blogReaderBean.readerId}">
+										<f:selectItem itemLabel="Select One" itemValue="#{NULL}" />
+										<f:selectItems value="#{blogReaderBean.readers}" />
+									</p:selectOneMenu>
+								</div>
+
+								<p:panelGrid columns="4"
+									columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+									layout="grid" styleClass="ui-panelgrid-blank ui-fluid"
+									style="border:0px none; background-color:transparent;">
+
+									<p:row>
+										<p:column styleClass="ui-grid-col-12">
+											<p:commandButton value="Save"
+												action="#{blogReaderBean.saveEdit()}"
+												update=":blogReaderEditForm"
+												style="width: auto; margin-right: 5px;">
+												<f:param name="selectedId" value="#{blogReaderBean.editId}" />
+											</p:commandButton>
+
+											<p:commandButton value="Cancel"
+												onclick="PF('dlgUpdate').hide()"
+												styleClass="ui-button-raised ui-button-danger"
+												style="width: auto; margin-top: 5px;" />
+										</p:column>
+									</p:row>
+
+								</p:panelGrid>
+							</div>
+						</div>
+					</h:form>
+				</p:dialog>
+			</div>
+		</ui:define>
+	</ui:decorate>
+
+</h:body>
+</html>

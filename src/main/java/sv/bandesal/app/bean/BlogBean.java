@@ -74,7 +74,7 @@ public class BlogBean {
 		return "blogs.xhtml?faces-redirect=true";
 	}
 
-	public String displayEditModal() {
+	public void displayEditModal() {
 		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
 				.get("selectedreaderId");
 		var blog = blogService.getBlogById(Integer.valueOf(id));
@@ -83,9 +83,8 @@ public class BlogBean {
 		this.setEditId(id);
 		this.setTitle(blog.getTitle());
 		this.setDescription(blog.getDescription());
-		pfcurrent.ajax().update(":blogEditForm");
+		pfcurrent.ajax().update(":blogReaderEditForm");
 		pfcurrent.executeScript("PF('dlgUpdate').show();");
-		return "";
 	}
 
 	public String saveEdit() {

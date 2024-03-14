@@ -43,7 +43,7 @@ public class ReaderBean {
 		return "readers.xhtml?faces-redirect=true";
 	}
 
-	public String displayEditModal() {
+	public void displayEditModal() {
 		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
 				.get("selectedreaderId");
 		var pfcurrent = PrimeFaces.current();
@@ -53,7 +53,6 @@ public class ReaderBean {
 		this.setName(reader.getName());
 		pfcurrent.ajax().update(":readerEditForm");
 		pfcurrent.executeScript("PF('dlgUpdate').show();");
-		return "";
 	}
 
 	public String saveEdit() {
@@ -64,6 +63,7 @@ public class ReaderBean {
 			var reader = readerService.getReaderByID(Integer.valueOf(id));
 			reader.setName(name);
 			readerService.editReader(reader);
+			this.setName("");
 			return "readers.xhtml?faces-redirect=true";
 		} catch (Exception ex) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", ex.getMessage());

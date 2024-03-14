@@ -56,11 +56,8 @@
 								<p:commandButton value="Save" action="#{blogBean.addNew}"
 									update=":blogForm" 
 									styleClass="ui-button-outlined"/>
-
-								<p:commandButton value="Cancel"
-									type="button"
-									action="#{blogBean.cancelOnNew()}"
-									styleClass="ui-button-outlined ui-button-danger"/>
+									
+								<a class="cancel-button-link" href="blogs.xhtml?faces-redirect=true">Cancel</a>
 							</div>
 
 						</div>
