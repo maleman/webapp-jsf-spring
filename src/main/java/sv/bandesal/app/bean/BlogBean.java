@@ -83,7 +83,7 @@ public class BlogBean {
 		this.setEditId(id);
 		this.setTitle(blog.getTitle());
 		this.setDescription(blog.getDescription());
-		pfcurrent.ajax().update(":blogReaderEditForm");
+		pfcurrent.ajax().update(":blogEditForm");
 		pfcurrent.executeScript("PF('dlgUpdate').show();");
 	}
 

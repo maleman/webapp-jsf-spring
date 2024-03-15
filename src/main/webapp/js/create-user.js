@@ -1,7 +1,7 @@
 
 
 const createUserButton = document.querySelector('.create-user-button');
-const USER_NAME_PATTERN = /^[A-Z]{1}[a-z0-9_-]{3,10}$/;
+const USER_NAME_PATTERN = /^[a-zA-Z]{1}[a-zA-Z0-9_-]{3,10}$/;
 const PASSWORD_PATTERN = /(?=(.*[0-9]))(?=.*[\!@#$%^*?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
 const TIME_OUT_DISPLAY_MSG = 8000;
 
