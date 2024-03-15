@@ -1,4 +1,4 @@
-# Proyecto spring JSF(PrimeFace)
+# Proyecto DEMO spring JSF(PrimeFace)
 ## :bulb:Tecnologias usadas
 <ul>
   <li>Java 17</li>
@@ -51,4 +51,13 @@ http://localhost:8080/login.xhtml
 >   - Debe tener una letra minúscula, una letra mayúscula.
 >   - un número, un carácter (\!@#$%^*?)
 >   - Debe tener una longitud minima de 8 caracteres
+
+### Interfaz de la app.
+![Screenshot 2024-03-15 084113](https://github.com/maleman/webapp-jsf-spring/assets/12504018/31d45ed6-779d-439d-a919-a26e23053bd0)
+
+![Screenshot 2024-03-15 084246](https://github.com/maleman/webapp-jsf-spring/assets/12504018/7966a35d-50c3-4354-9528-a9f3f2df01d4)
+
+![Screenshot 2024-03-15 084350](https://github.com/maleman/webapp-jsf-spring/assets/12504018/f14478a9-3db2-444a-9763-dd32c0eb1ef9)
+
+
 
