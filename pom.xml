@@ -9,7 +9,7 @@
 		<version>3.2.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>sv.bandesal</groupId>
+	<groupId>ni.dev</groupId>
 	<artifactId>webapp-jsf-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>webapp-jsf-spring</name>
